@@ -1,0 +1,35 @@
+package mx.uach.weatherapp
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+
+class WeatherActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_weather)
+
+        val city = intent.getStringExtra("CITY")
+        val txtCity = findViewById<TextView>(R.id.txtCity)
+
+        txtCity.text = city
+
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://mp-weather-app-2.herokuapp.com/CUU"
+
+        val stringRequest =  StringRequest(Request.Method.GET, url,
+            Response.Listener<String>{respose ->
+                Log.i("DATA", respose.toString())
+            },
+            Response.ErrorListener { error ->
+                Log.i("DATA", error.toString())
+            })
+
+        queue.add(stringRequest)
+    }
+}

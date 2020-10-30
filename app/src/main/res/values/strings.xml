@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">weatherapp</string>
+    <string name="select_city">Selecciona la ciudad que deseas consultar</string>
+    <string name="city_cuu">Chihuahua</string>
+    <string name="city_cdmx">Ciudad de Mexico</string>
+    <string name="weather_value_cloudly">Nublado</string>
+</resources>
