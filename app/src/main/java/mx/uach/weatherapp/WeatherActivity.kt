@@ -8,6 +8,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import mx.uach.weatherapp.models.Weather
 
 class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,15 +18,19 @@ class WeatherActivity : AppCompatActivity() {
 
         val city = intent.getStringExtra("CITY")
         val txtCity = findViewById<TextView>(R.id.txtCity)
-
-        txtCity.text = city
+        val txtTemperature = findViewById<TextView>(R.id.txtTemperature)
+        val txtWeather = findViewById<TextView>(R.id.txtWeather)
 
         val queue = Volley.newRequestQueue(this)
-        val url = "https://mp-weather-app-2.herokuapp.com/CUU"
+        Log.i("Data", city.toString())
+        var url = "https://mp-weather-app-2.herokuapp.com/$city"
 
         val stringRequest =  StringRequest(Request.Method.GET, url,
             Response.Listener<String>{respose ->
-                Log.i("DATA", respose.toString())
+                val clima = Gson().fromJson(respose.toString(), Weather :: class.java)
+                txtCity.text = clima.name
+                txtWeather.text = clima.weather
+                txtTemperature.text = clima.temperature
             },
             Response.ErrorListener { error ->
                 Log.i("DATA", error.toString())

@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/lytScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -23,25 +24,6 @@
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/btnCuu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:background="@android:color/background_light"
-            android:text="@string/city_cuu"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="36sp" />
-
-        <Button
-            android:id="@+id/btnCdmx"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:text="@string/city_cdmx"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="36sp" />
 
     </LinearLayout>
 
